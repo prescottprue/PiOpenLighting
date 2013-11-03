@@ -1,0 +1,441 @@
+X/Y/2013 ola-0.8.34
+ * Added more RDM responder tests to cover some slot related edge cases
+ * Log an error if we try and run an RDM test that doesn't exist
+ * Added pretty printing of sensor definition messages
+ * Refactor sensor functionality in the software RDM responders and add a load
+   average sensor to them.
+
+22/10/2013 ola-0.8.33
+ * Fix the build breakage when using XCode 5 (clang 500)
+ * Save the SPI pixel count during shutdown
+ * Fix E1.31 merge timeouts - #256
+ * Fixed 2 bugs in the RDM responder tests.
+ * Fix a bug where OLA wouldn't receive on ArtNet universe 0 - #260
+ * Expose the source priority in the C++ API
+
+29/9/2013 ola-0.8.32
+ * Added more RDM responder tests to cover E1.37-1
+ * Print the UID, manufacturer, model description, software version and 
+   timestamp in the RDM test logs
+ * Added pretty printing of slot info messages
+ * Added support for new OSC formats
+ * Added support for more than 4 ArtNet output ports
+ * Added a simple ArtNet loadtest
+ * Fixed a couple of bugs in the Dummy RDM responders
+ * Added support for templates in the OSC target addresses.
+ * Re-wrote the SPI backend with loads of new options.
+ * Improved the performance of the RPC system on Linux, leading to a 1000x
+   reduction in RPC latency and 4x speedup of the RDM tests.
+
+12/8/2013 ola-0.8.31
+ * Changed the max number of E1.31 ports to 128
+ * Added support for the MilInst 1-463 interface.
+ * Added support for the KMTRONIC usb device (ftdi clone).
+ * Added more RDM responder tests for E1.37-1 PIDs
+ * Display the OLA version in the RDM responder test output
+ * Display the response param data length in the responder test output
+ * Added new software RDM responders (Sensor, Dimmer, Moving Light, etc.)
+ * Added slot info support to the software RDM responders
+ * Updates to the Saleae Logic RDM sniffer
+ * Fixed a crash when a USB device was unplugged - bug #248
+ * Fixed sub device RDM request fan out - bug #246
+ * Fixed universe garbage collection - bug #149
+ * Added Bash completions of UIDs for the RDM commands
+ * Change the examples and SLP programs to write errors to STDERR not STDOUT.
+ * Renamed AllManufactureDevices(sic) to VendorcastAddress in UID interface
+ * Add vendorcast and broadcast options to ola_rdm_discover.
+ * Started commenting the codebase with doxygen
+ * Added more man pages.
+ * Added support for reset device to the web UI
+ * Added more PIDs to the RDM model collector
+
+16/6/2013 ola-0.8.30
+ * Clean up olad signal handling to avoid race conditions.
+ * Added support for the new Jese USB widgets
+ * Fixed a bug in the python API which broke the RDM test server.
+ * Fixed the E1.33 library install.
+ * Add an OLA manufacturer specific PID to the Dummy RDM Responder.
+ * Update the model collector to gather info on manufacturer specific PIDs.
+
+29/5/2013 ola-0.8.29
+ * Added KiNet output support.
+ * Added support for the Karate USB devices.
+ * More E1.33 enhancements
+ * Added usage information to the json urls
+ * Minor fixes to the RDM responder tests
+ * Lint the entire C++ codebase.
+ * Fixed various flaky unittests
+ * Introduced a new command line flags handling
+ * Print command classes in the RDM Responder tests
+ * Fix a memory leak detected by the leak checker
+ * Patches to build correctly on Android
+
+20/4/2013 ola-0.8.28
+ * Add support for the LPD8806 pixels using SPI.
+ * Fix the build on OS X Lion 10.7 - #231
+ * Fix the build with clang 4.2
+ * Added a simple E1.31 load test tool
+ * Added the first E1.33 (RDMNet) tools
+ * Switched to using the new command line flags module in some programs.
+ * Man page for dmxmonitor - #219
+ * Rename ola_universe_stats to ola_uni_stats, standardising names
+ * Bash Completions for all programs in ola and ola-rdm-tests
+ * Various minor fixes of program help
+ * Addition and standardisation of PID options between ola_rdm_get/set and
+   e133_controller
+ * Standardised all the following long arguments from _ to - in programs and
+   completion: --long_name --plugin_id --port_id --preview_mode --list_pids
+   --sub_device
+ * Complete plugin and universe ids in completions and add options to
+   ola_uni_info and ola_plugin_info to assist with this
+ * Internal cleanup
+
+2/3/2013 ola-0.8.27
+ * Changed the arguments to dmxmonitor - #219
+ * Build fixes for various platforms
+ * Added a SLP implementation (not installed right now)
+ * Updated E1.33 to work with the latest draft
+ * Add a script to enforce code licences
+ * Add the slp_sa_test program
+ * Improved support for the RDM-TRI
+ * Added support for using the loopback interface with the ArtNet plugin
+ * Fixed some bugs in the RDM tests
+ * Add configure time options to disable each plugin
+ * Fixed a bug in the sniffer tool
+ * Display the amount of time the RDM tests take in the web UI
+ * Update to support automake 1.13
+ * Show the plugin state and config file location on the web UI
+ * Added support for the Enttec USB Pro Mk II.
+ * Added an SPI plugin for driving LED pixels based on the WS2801 chip.
+
+11/11/2012 ola-0.8.26
+ * Added the OSC plugin
+ * Fixed the bug with displaying the TRI serial number
+ * Added a script to save and restore RDM settings for a rig
+ * Added a script to compare RDM configuration at different times
+ * Merged in hip's test refactoring changes - #215
+ * Allow the number of E1.31 ports to be specified in the config file
+ * Better RDM ACK_OVERFLOW support - #216
+ * Fixes for the RDM Tests - #213, #214
+
+9/10/2012 ola-0.8.25
+ * Bug fixes for the RDM Responder tests
+ * Add some missing files to the tarball
+ * Rename the debian init scripts
+
+3/10/2012 ola-0.8.24
+ * Add support for soh.cz devices
+ * Added the RDM model collector to the RDM Test Server
+ * Enhance the RDM Responder Tests page
+ * Clean up the Python Wrapper a bit
+ * RDM Test fixes for devices with a personality with a slot count of 0
+ * RDM Test fixes for some of the new E1.37-1 PIDs
+ * Switched the Debian init script to use a pidfile
+ * Added a Debian init script for the RDM Test Server
+
+9/9/2012 ola-0.8.23
+ * Added the ftdidmx plugin thanks to Rui Barreiros - #164
+ * Debian package improvements from RenZO (init script)
+ * RDM Test server is now installed if --enable-rdm-tests is used
+ * Bug fixes in the RDM Test Server
+ * Switched to the new logo
+ * Fixed the build for gcc 4.7.1
+ * Network library cleanup
+ * Added the ola_universe_stats scripts
+
+10/8/2012 ola-0.8.22
+ * Added the first version of the RDM Test Server
+ * Added a configure time option to disable unittests
+ * Various fixes for the debian package files
+ * Added a DMX Monitor to the web UI
+ * Various fixes so that the FreeBSD build works
+ * Moved all JSON generation code to a module
+ * Defend against exhausting the connection pool in the web UI - #186
+ * Fix errors with clang v3.1
+ * Fixed a RDM discovery bug.
+
+18/7/2012 ola-0.8.21
+ * Fix the broken Eurolite plugin on Mac
+ * Add a configure option to install the RDM tests
+ * Add a configure option to downgrade warnings to non-fatal
+ * Add support for the UID type to PID definitions
+ * Add support for timestamps in the RDM sniffer
+ * Ignore Enttec Sniffer devices within OLAD
+ * Add a script to launch olad for the RDM tests
+ * Add Mute/Unmute cases to the RDM tests
+ * Added Discovery cases to the RDM tests
+
+18/6/2012 ola-0.8.20
+ * Fix uuid library detection - #187
+ * Fix the Java build on Linux
+ * Add some Robe RDM debugging
+ * Print the version when olad starts
+ * Fix the E1.31 tests
+
+7/6/2012 ola-0.8.19
+ * Simple Java API
+ * Significant changes to the underlying I/O code
+ * Add support for IPv4 RDM types
+ * Configure time flag to disable the root check
+ * Large Refactor of the E1.31 code to enable E1.33 later
+ * Switched to using the standard command set for TRI devices - #171
+ * Add support for multiple devices to the DummyPort - #178
+ * Fixed a bug in the Dummy Responder - #184
+ * Added --version to olad
+
+01/03/2012 ola-0.8.18
+ * Added RDM support for the Enttec USB Pro - #146
+ * Added support for reading/writing RDM sniffer logs to a file
+ * Fixed a bug in the Eurolite device - #165
+ * Added support for multiple Open DMX USB devices (still Linux Only) - #166
+ * Fixed a build error in the StageProfi widget - #169
+ * Added an option to choose the NIC olad uses - #173
+ * Add support for listing remote ArtNet nodes - #167
+
+23/01/2012 ola-0.8.17
+ * fix a bug in the RDM sniffer
+ * change olad not to fail if it can't create the preferences directory
+ * fix the ArtNetTest if stdin receives data
+
+19/01/2012 ola-0.8.16
+ * Added a configure test for the python google.protobuf module
+ * Added the ola_trigger program
+ * Changed the ForceDiscovery rpc to only return once discovery completes
+ * Fixed ArtNet RDM discovery so DMXWorkshop works correctly - #160
+ * Fixed a memory leak in the ArtNet RDM implementation
+ * Add an option for using the limited broadcast address for ArtNet dmx data
+ * Add an option to ignore specific USB serial devices
+ * Added a program to sniff traffic using the RDM USB Pro
+ * Added many more unit tests for the ArtNet plugin
+ * Fixed build warnings found by newer versions of clang
+ * Fix a bug in the RDM discovery code for the Robe Widget
+
+12/12/2011 ola-0.8.15
+ * Add DMX IN support for the Robe widget - #156
+ * Add an option to send DMX during RDM tests - #153
+ * Add basic support for sending ArtNet timecode - #150
+ * Added a DMX keypad to the mobile UI, thanks to Chris Stranex
+ * Fix a race condition in the WidgetDectectorThreadTest
+ * Fix compile errors with new versions of clang
+ * Fix compile errors with new versions of gcc - #158
+ * Fix the python tests so they pass with macports
+ * Update debian package configs
+ * Use relative paths in the web UI so they work behind proxies - #163
+
+2/11/2011 ola-0.8.14
+ * fix a bug in the port limiter
+ * minor RDM test fixes
+ * change the default limit for the TRI devices to 40fps
+ * add support for the ultraDMX Pro devices
+ * add an option to skip factory defaults in the RDM tests
+
+22/10/2011 ola-0.8.13
+ * Attempt to reconnect to usb devices periodically - #143
+ * Add support for ArtNet 3 - #144
+ * Add support for the Eurolite USB Pro - thanks Harry F
+ * Large cleanup of the build rules
+ * Added a script to collect device model information using RDM
+ * Added a basic show recorder program
+ * Add TX & RDM support for the Robe Universal Interface - #148
+ * Added a frame limiter for the DMX/RDM-TRI devices
+
+3/9/2011 ola-0.8.12
+ * Add the generic messaging framework and use it to handle RDM PIDs
+ * Add support for manufacturer specific PIDs in the C++ RDM CLI tools - #112
+ * Add proper ACK_TIMER handling the in C++ RDM CLI tools - #93
+ * Added STATUS_MESSAGES support in the C++ RDM CLI tools - #111
+ * Further improvements of the RDM test suite
+ * Fixed link errors with the new version of gcc - #142, #145
+ * Fixed sorting of Sensors in the RDM web UI - #137
+ * Improvements to the threading model to support more async operations.
+ * Enabled SO_REUSEPORT so that local ArtNet applications work - #141
+ * Reduced the cost of logging by using lazy evaluation
+ * Added more PIDs to the dummy responder
+ * Refactored the core I/O classes, removed the "socket operation on
+   non-socket" warning
+ * Fixed a bug sorting UIDs in the python libs
+
+28/6/2011 ola-0.8.11
+ * Fix bugs on big endian systems
+ * Move ola-examples into the main package
+ * Add SLP support to the e133_controller
+
+22/6/2011 ola-0.8.10
+ * Added support for the VX8062 device
+ * Fixed a compile bug caused by bad libprotobuf handling
+ * Add some more warnings / advisories to the RDM Responder tests
+ * Internal network API cleanup
+ * Fixed a crashing bug in the RDM responder tests
+ * Added tools for testing the E1.33 / SLP protocol
+ * Fixes for OS X 10.4
+
+24/4/2011 ola-0.8.9
+ * Added support for the Arduino RDM RGB Mixer
+ * Fixed a bug when a broadcast RDM request was sent to a universe with
+   multiple ports bound
+ * Fixed a memory leak in the RDM code
+ * Added more RDM tests including broadcast & vendorcast tests
+ * Added a command line flag to specify the config directory
+ * Added some additional log messages to assist users with troubleshooting
+ * Fixed a memory leak in the RDM UI code.
+
+26/3/2011 ola-0.8.8
+ * Added RDM discovery for the DMXter widgets
+ * Added a bunch more RDM responder tests
+ * Two RDM memory leaks fixed
+ * Incremental RDM discovery added (where supported)
+ * Minor code cleanup
+
+19/2/2011 ola-0.8.7
+ * Added a Python RDM API & example programs.
+ * Integrated the python rdm code with the PID store (rdm.openlighting.org)
+ * Added around 128 RDM responder test cases
+
+9/12/2010 ola-0.8.6
+ * added the graphical RDM patcher
+ * improved support for picking the outgoing multicast interface
+ * add RDM support for the DMXters
+ * fixed a couple of memory leaks in the UI
+ * internal refactoring to support testing
+ * merged the Callback & Closure classes
+ * added extensive testing for the DMX-TRI and DMXter widgets
+ * simplified internal RDM handling
+
+06/11/2010 ola-0.8.5
+  Added a simple mobile web UI
+  Fixed the web UI so it works on Opera
+  Start olad automatically from the c++ clients if it's not already running
+  Add more attributes to the RDM web UI
+  Bug fixes for the RDM TRI
+  Python API bug fixes
+
+19/10/2010 ola-0.8.4
+  Add the RDM web UI
+  Work around an ArtNet RDM bug
+  Handle ACK overflow in the DMX-TRI
+
+23/9/2010 ola-0.8.3
+  Add Manufacturer / Device name resolution to the web UI for RDM devices.
+  Fix a couple of compile bugs.
+  For each DMX-over-IP plugin, display the bound IP address in the device name.
+  Change the DMX console to send a packet every second even if nothing changes.
+  Fix a memory leak in the RDM controller
+
+19/9/2010 ola-0.8.2
+  Moved the DMX Console to the new UI
+  Removed the old web UI, no more requirements for ctemplate
+  Added ACK_OVERFLOW support for RDM over ArtNet
+  Added Support for the last remaining E1.20 PIDS
+  Re-factored the Ola Client code to fix the problem of de-multiplexing
+    responses.
+  Add the OlaCallbackClient as the recommended C++ API
+  Moved the HTTP Server to using the OlaCallbackClient directly.
+
+2/9/2010 ola-0.8.1
+  New web UI
+  Fixed some bugs in the device shutdown code
+  Fixed some compiler warnings with gcc 4.4
+
+7/8/2010 ola-0.8.0
+  Initial RDM support for the ArtNet, Dummy & DMX-TRI devices
+  New ArtNet stack to support RDM - no more dependency on libartnet
+  Support for packetheads DMX dongle
+  Make the FPS limit for USB Pro devices configurable
+
+20/5/2010 ola-0.7.4
+  Fixed the python API
+  Fixed the client deadlock issue
+  Fixed the USBDMX2 firmware loading
+  Fixed ARM alignment bug in E1.31
+  Fixed ambiguous errors when plugins were disabled
+  Added the /reload handler the reload plugins
+  Turn off SIGPIPEs
+  Clean up the streaming client API
+  Use the serial number to identify uDMX devices
+
+18/4/2010 ola-0.7.2 / 0.7.3
+  Added support for the Velleman 8062
+  Added support for the uDMX
+  Added support for the USBDMX2
+  Added support for the DMXKing
+  Fixed a crash if olad was started while another instance was running
+  Random build fixes
+
+27/3/2010 ola-0.7.1
+  Implemented the Usb Protocol Extensions
+  Added output rate throttling for the Usb Pro devices
+  Added the streaming DMX client
+  Fixed some uuid detection issues
+  Made the server more resistant to bad clients
+  ./configure script fixes
+
+28/2/2010 ola-0.7.0
+  Added E1.31 merging & sequencing support
+  Improved USB Pro handling
+  Added port priorities & multi source merging
+  TX support for the DMX-TRI
+  Support for the Ardiuno RGB Mixer
+  DSCP for E1.31
+  Support for using the OSSP uuid library
+  Removal of run-time loadable plugins.
+
+10/1/2010 ola-0.6.0
+  Added Pathport support
+  Added support for the final version of the E1.31 Standard
+  Changed to link time plugins rather than run time (required for win32 port)
+  Cleanup of the dmx4linux plugin (thanks to Bastien)
+  Linted almost everything
+  Many more export map variables
+  Restructure of the Port class internals
+
+21/11/2009 ola-0.5.0
+  Added Sandnet Support
+  Added automatic USB Pro device detection
+  Fixed a HTP merging bug
+
+18/10/2009 ola-0.4.0
+  Added E1.13 Support
+
+26/8/2009 ola-0.3.1
+  Fixed the open dmx usb off by one bug
+  Minor build tool fixes
+
+8/8/2009 ola-0.3.0
+  Changed the name of the project to Open Lighting Architecture
+  Major rewrite
+   - added export_map
+   - added http server & web interface
+   - added web dmx console
+   - now works on mac
+   - converted to using protocol buffers
+   - supports embedding
+   - port patches persist across restarts
+   - plenty of unittests (more required)
+
+14/10/2007 lla-0.2.3
+  Plugins can now be disabled from the config files
+
+14/9/2007 lla-0.2.2
+  Fixed a bug with the DMX USB Pro
+  Refinements to the StageProfi plugin
+
+1/1/2007 lla-0.2.1
+  Added support for the Stage Profi widget
+  Added Pathport support
+
+1/1/2007 lla-0.2.0
+  Added Sandnet Support
+  Added Open DMX USB Support
+  Re-write of the client library
+  Added universe merge modes
+  Added persistent universe names and merge modes
+  Added device config messages
+
+27/4/2006 lla-0.1.3
+  Bugfixes
+
+17/4/2006 lla-0.1.2
+  Support for multiple Enttec Pro devices
+  Logging levels can be changed with -USR1 signals
+
+
